@@ -1,0 +1,13 @@
+.button {
+    width: 40px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calcMain {
+    width: 130px;
+    margin: auto;
+}

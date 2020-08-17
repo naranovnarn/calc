@@ -1,23 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { add_number, some_operation, get_result, add_clear } from '../redux/actionCreators';
-import './Calc.css'
+import { add_number, select_operation, get_result, clear } from '../redux/actionCreators';
+import './Calc.css';
+import CalcNumber from './CalcNumber';
 
 class Calc extends React.Component {
 
-    add_number = (e) => {
-      this.props.add_number(e.target.textContent);
+    add_number = (number) => {
+      this.props.add_number(number);
     }
 
-    some_operation = (e) => {
-      this.props.some_operation(e.target.textContent);
+    select_operation = (action) => {
+      this.props.select_operation(action);
     }
 
     get_result = () => {
-      this.props.get_result()
+      this.props.get_result();
     }
-    add_clear = () => {
-      this.props.add_clear()
+    clear = () => {
+      this.props.clear();
     }
 
   
@@ -33,63 +34,63 @@ class Calc extends React.Component {
           <div className="calcMain">
             <div className='row'> 
               <div>
-                <button className="button" onClick={this.add_number}>1</button>
+                <CalcNumber number="1" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.add_number}>2</button>
+                <CalcNumber number="2" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.add_number}>3</button>
+                <CalcNumber number="3" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.some_operation}>+</button>
-              </div>
-            </div>
-            <div className='row'> 
-              <div>
-                <button className="button" onClick={this.add_number}>4</button>
-              </div>
-              <div>
-                <button className="button" onClick={this.add_number}>5</button>
-              </div>
-              <div>
-                <button className="button" onClick={this.add_number}>6</button>
-              </div>
-              <div>
-                <button className="button" onClick={this.some_operation}>-</button>
+                <CalcNumber number="+" handleClick={this.select_operation} />
               </div>
             </div>
             <div className='row'> 
               <div>
-                <button className="button" onClick={this.add_number}>7</button>
+                <CalcNumber number="4" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.add_number}>8</button>
+                <CalcNumber number="5" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.add_number}>9</button>
+                <CalcNumber number="6" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.some_operation}>*</button>
+                <CalcNumber number="-" handleClick={this.select_operation} />
               </div>
             </div>
             <div className='row'> 
               <div>
-                <button className="button" onClick={this.add_number}>.</button>
+                <CalcNumber number="7" handleClick={this.add_number} />
               </div>
               <div>
-                <button className="button" onClick={this.add_number}>0</button>
+                <CalcNumber number="8" handleClick={this.add_number} />
+              </div>
+              <div>
+                <CalcNumber number="9" handleClick={this.add_number} />
+              </div>
+              <div>
+                <CalcNumber number="*" handleClick={this.select_operation} />
+              </div>
+            </div>
+            <div className='row'> 
+              <div>
+                <CalcNumber number="." handleClick={this.add_number} />
+              </div>
+              <div>
+                <CalcNumber number="0" handleClick={this.add_number} />
               </div>
               <div>
                 <button className="button" onClick={this.get_result}>=</button>
               </div>
               <div>
-                <button className="button" onClick={this.some_operation}>/</button>
+                <CalcNumber number="/" handleClick={this.select_operation} />
               </div>
             </div>
             <div className='row'> 
               <div>
-                <button onClick={this.add_clear}>обнулить</button>
+                <CalcNumber number="C" handleClick={this.clear} />
               </div>
             </div>
           </div>
@@ -113,14 +114,14 @@ class Calc extends React.Component {
       add_number: (number) => {
         dispatch(add_number(number))
       },
-      some_operation: (operator) => {
-        dispatch(some_operation(operator))
+      select_operation: (operator) => {
+        dispatch(select_operation(operator))
       },
       get_result: () => {
         dispatch(get_result())
       },
-      add_clear: () => {
-        dispatch(add_clear())
+      clear: () => {
+        dispatch(clear())
       }
     };
   };

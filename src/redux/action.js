@@ -5,7 +5,7 @@ export function ADD_NUMBER(state, payload) {
     return nextState;
 }
 
-export function SOME_OPERATION(state, payload) {
+export function SELECT_OPERATION(state, payload) {
     const { operator } = payload;
     const nextState = { ...state, tablo: '', operand1: +state.tablo, operator};
     console.log(state.operand1)

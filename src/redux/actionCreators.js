@@ -7,9 +7,9 @@ export function add_number(number) {
 	};
 }
 
-export function some_operation(operator) {
+export function select_operation(operator) {
 	return {
-		type: types.SOME_OPERATION,
+		type: types.SELECT_OPERATION,
 		payload: { operator }
 	};
 }
@@ -20,7 +20,7 @@ export function get_result(){
 	};
 }
 
-export function add_clear() {
+export function clear() {
 	return {
 		type: types.CLEAR
 	};
